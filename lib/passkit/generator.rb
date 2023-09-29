@@ -1,4 +1,4 @@
-require 'filezip'
+require 'zip'
 
 module Passkit
   class Generator
@@ -138,7 +138,7 @@ module Passkit
       zip_path = TMP_FOLDER.join("#{@pass.file_name}.pkpass")
       zipped_file = File.open(zip_path, "w")
 
-      Filezip::OutputStream.open(zipped_file.path) do |z|
+      Zip::OutputStream.open(zipped_file.path) do |z|
         Dir.glob(@temporary_path.join("**")).each do |file|
           z.put_next_entry(File.basename(file))
           z.print File.read(file)
