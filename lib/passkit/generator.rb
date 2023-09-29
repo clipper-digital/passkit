@@ -1,4 +1,4 @@
-include 'rubyzip'
+require 'rubyzip'
 
 module Passkit
   class Generator
